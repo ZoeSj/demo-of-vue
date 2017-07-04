@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- 参数在指令后以冒号指明。 -->
+<!-- 修饰符
+修饰符是以半角句号 . 指明的特殊后缀，用于指出一个指定应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()： -->
+<!--   -->
+<html>
+<head>
+	<title>v-参数</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<pre><a v-bind:href="url">小狐狸爱吃糖</a></pre>
+		<!-- <a v-on:click="doSomething"> -->
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				url:'https://zoesj.github.io/'
+			}
+		})
+	</script>
+</body>
+</html>

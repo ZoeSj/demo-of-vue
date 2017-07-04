@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-else</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+<!-- 		<div v-if="Math.random() > 0.5">
+			sorry
+		</div>
+		<div v-else>
+			not sorry
+		</div> -->
+		<h4 v-show="ok">您的选择是：</h4><br><!-- 注意: v-show 不支持 <template> 语法。 -->
+		<div v-if="type === 'A'">A</div>
+		<div v-else-if="type === 'B'">B</div>
+		<div v-else-if="type === 'C'">C</div>
+		<div v-else>Not A/B/C</div>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				type:'C',
+				ok:true
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>welcome to my place！</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.7/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.17/vue-resource.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+</body>
+<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">欢迎来到小吃街</h1>
+        <div id="app">
+            <table class="table table-hove" v-cloak>
+                <thead>
+                    <tr>
+                        <th class="text-right">序号</th>
+                        <th class="text-right">菜名</th>
+                        <th class="text-right">厨师</th>
+                        <th class="text-right">价格</th>
+                        <th class="text-right">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="food in foods">
+                        <td class="text-right">{{food.id}}</td>
+                        <td class="text-right">{{food.name}}</td>
+                        <td class="text-right">{{food.cooker}}</td>
+                        <td class="text-right">{{food.price}}</td>
+                        <template v-if="food.id%2==0">
+                            <td class="text-right">
+                                <button class="btn btn-success" type="button" @click="delFood(food)">不吃</button>
+                            </td>
+                        </template>
+                        <template v-else>
+                            <td class="text-right">
+                                <button class="btn btn-danger" type="button" @click="delFood(food)">不吃</button>
+                            </td>
+                        </template>
+                    </tr>
+                    <td class="text-right" colspan="5">
+                        <h4>总价：{{ sum }}</h4>
+                    </td>
+                </tbody>
+            </table>
+            <div id="add-food">
+                <legend>添加食物</legend>
+                <div class="from-group">
+                    <label>菜名</label>
+                    <input type="text" class="form-control" v-model="food.name">
+                </div>
+                <div class="from-group">
+                    <label>厨师</label>
+                    <input type="text" class="form-control" v-model="food.cooker">
+                </div>
+                <div class="from-group">
+                    <label>价格</label>
+                    <input type="text" class="form-control" v-model="food.price">
+                </div>
+                <button class="btn btn-primary btn-block" @click="addFood()">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        sortparam: '',
+        food: {
+            id: 0,
+            name: '',
+            cooker: '',
+            price: ''
+        },
+        foods: [{
+            id: 1,
+            name: '葱花曲奇饼干',
+            cooker: '邓文辉',
+            price: 32.0
+        }, {
+            id: 2,
+            name: '鲜莲子番薯小白果',
+            cooker: '落寞涵雨',
+            price: 30.0
+        }, {
+            id: '3',
+            name: '奶油蜜桃派',
+            cooker: '田忆彤',
+            price: 124.0
+        }, {
+            id: 4,
+            name: '骨汤香辣茄子干',
+            cooker: '秋凉的美食',
+            price: 20.0
+        }]
+    },
+    computed: {
+        sum: function() {
+            var result = 0;
+            for (var i = 0; i < this.foods.length; i++) {
+                result += Number(this.foods[i].price)
+            };
+            return result;
+        }
+    },
+    methods: {
+        addFood: function() {
+            this.food.id = this.foods.length + 1;
+            this.foods.push(this.food);
+            this.food = '';
+        },
+        delFood: function(food) {
+            this.foods.$remove(food);
+        },
+        sortBy: function(sortparam) {
+            this.sortparam = sortparam
+        }
+    }
+})
+</script>
+
+</html>

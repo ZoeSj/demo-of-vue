@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- 指令
+指令是带有 v- 前缀的特殊属性。
+指令用于在表达式的值改变时，将某些行为应用到 DOM 上。 -->
+<!--  v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素。 -->
+<html>
+<head>
+	<title>v-前缀</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-if="seen">now you can see me.</p>
+		<template v-if="ok">
+			<h1>Today is a nice day!</h1>
+			<p>Learning is hard!</p>
+			<p>We should study all our life!</p>
+		</template>
+		<!-- Handlebars 模板 -->
+<!-- 		{{#if ok}}
+  			<h1>Yes</h1>
+		{{/if}} -->
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				seen:false,
+				ok:true
+				// seen:true,
+				// ok:true
+			}
+		})
+	</script>
+</body>
+</html>

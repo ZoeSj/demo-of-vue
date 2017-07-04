@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- 循环使用 v-for 指令。
+v-for 指令需要以 item in items 形式的特殊语法， items 是源数据数组并且 item 是数组元素迭代的别名。
+v-for 可以绑定数据到数组来渲染一个列表 -->
+<html>
+<head>
+	<title>v-for</title>
+	<meta charset="utf-8">
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ol>
+			<li v-for="todo in todos">{{todo.text}}</li>
+		</ol>
+		<span v-bind:title="message">鼠标停留查看变化</span>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				message:'页面加载于'+new Date(),
+				todos:[
+     				 { text: '学习 JavaScript' },
+     				 { text: '学习 Vue' },
+     				 { text: '整个牛项目' }
+    				]
+			}
+		})
+	</script>
+</body>
+</html>

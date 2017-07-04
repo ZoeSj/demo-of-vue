@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- HTML 属性中的值应使用 v-bind 指令。
+以下实例判断 class1 的值，如果为 true 使用 class1 类的样式，否则不使用该类 -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>v-bind</title>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+<style>
+	.class1{
+		background: #444;
+		color: #ccc;
+	}
+</style>
+</head>
+<body>
+<div id="app">
+	<label for="r1">修改颜色</label><input type="checkbox" v-model="class1" id="r1">
+	<br><br>
+	<div v-bind:class="{'class1':class1}">
+		directive v-bind:class1
+	</div>
+</div>
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			class1:false
+		}
+	})
+</script>
+</body>
+</html>

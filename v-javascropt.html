@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- Vue.js 都提供了完全的 JavaScript 表达式支持。 -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>v-javascript</title>
+	<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{5+5}}<br>
+		{{OK?'yes':'no'}}<br>
+		{{message.split('').reverse().join('')}}
+		<div v-bind:id="'list-'+id">today is a nice day!</div>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				OK: true,
+				message:'Zoe',
+				id:1
+			}
+		})
+	</script>
+</body>
+</html>

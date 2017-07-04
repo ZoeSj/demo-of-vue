@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- 使用 v-html 指令用于输出 html 代码 -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vue test_1</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <p>{{ message }}</p> -->
+		<div v-html = "message"></div>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{ 
+				message:'<h2>hello world!</h2>'}
+		})
+	</script>
+</body>
+</html>
